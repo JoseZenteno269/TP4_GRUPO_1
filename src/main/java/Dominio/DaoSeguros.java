@@ -26,12 +26,12 @@ public class DaoSeguros {
 		try 
 		{
 			connection = datos.obtenerConexion();
-			String query = "INSERT INTO seguros (descripcion, idTipo,costocont, costoaseg) VALUES (?,?,?,?)";
+			String query = "INSERT INTO seguros (descripcion, idTipo, costoContratacion, costoAsegurado) VALUES (?, ?, ?, ?);";
 			PreparedStatement pst = connection.prepareStatement(query);
-			pst.setString(2, seguro.getDescripcion());
-			pst.setInt(3, seguro.getIdtipo());
-			pst.setDouble(4, seguro.getCostocont());
-			pst.setDouble(5, seguro.getCostoaseg());
+			pst.setString(1, seguro.getDescripcion());
+			pst.setInt(2, seguro.getIdtipo());
+			pst.setDouble(3, seguro.getCostocont());
+			pst.setDouble(4, seguro.getCostoaseg());
 			
 			filas = pst.executeUpdate();
 		} catch (Exception e) 
@@ -62,7 +62,7 @@ public class DaoSeguros {
 		try 
 		{
 			connection = datos.obtenerConexion();
-			String query = "SELECT idSeguro,seguros.descripcion AS descripcionSeguro, tiposeguros.descripcion AS descripcionTipo, costoContratacion, costoAsegurado FROM seguros INNER JOIN tiposeguros ON seguros.idTipo = tiposeguros.idTipo;";
+			String query = "SELECT idSeguro, seguros.descripcion AS descripcionSeguro, seguros.idTipo, tiposeguros.descripcion AS descripcionTipo, costoContratacion, costoAsegurado FROM seguros INNER JOIN tiposeguros ON seguros.idTipo = tiposeguros.idTipo;";
 			PreparedStatement pst = connection.prepareStatement(query);
 			
 			ResultSet rst = pst.executeQuery();
