@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
+<<<<<<< HEAD
 	<classpathentry exported="true" kind="con"
 		path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/jdk-21">
+=======
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/jdk-26.0.2">
+>>>>>>> branch 'main' of https://github.com/JoseZenteno269/TP4_GRUPO_1.git
 		<attributes>
 			<attribute name="module" value="true" />
 		</attributes>
@@ -13,12 +17,18 @@
 			<attribute name="owner.project.facets" value="jst.web" />
 		</attributes>
 	</classpathentry>
+<<<<<<< HEAD
 	<classpathentry kind="con"
 		path="org.eclipse.jst.j2ee.internal.web.container" />
 	<classpathentry kind="con"
 		path="org.eclipse.jst.j2ee.internal.module.container" />
 	<classpathentry kind="lib"
 		path="C:/MySQL/mysql-connector-java-5.1.47/mysql-connector-java-5.1.47-bin.jar">
+=======
+	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
+	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
+	<classpathentry kind="lib" path="C:/Users/mateo/OneDrive/Desktop/TecnicaturaProg/Programacion 4 MySQL/mysql-connector-java-5.1.47/mysql-connector-java-5.1.47/mysql-connector-java-5.1.47.jar">
+>>>>>>> branch 'main' of https://github.com/JoseZenteno269/TP4_GRUPO_1.git
 		<attributes>
 			<attribute name="module" value="true" />
 			<attribute name="org.eclipse.jst.component.dependency"
