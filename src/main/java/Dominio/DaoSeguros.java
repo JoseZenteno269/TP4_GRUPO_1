@@ -18,83 +18,42 @@ public class DaoSeguros {
 	
 /// Agregar 
 
-	public boolean AgregarSeguros(Seguro seguro)
-	{
-		Connection connection = null;
-		int filas = 0;
+	public boolean AgregarSeguros(Seguro seguro){
 		
-		try 
-		{
-			connection = datos.obtenerConexion();
-			String query = "INSERT INTO seguros (descripcion, idTipo, costoContratacion, costoAsegurado) VALUES (?, ?, ?, ?);";
-			PreparedStatement pst = connection.prepareStatement(query);
-			pst.setString(1, seguro.getDescripcion());
-			pst.setInt(2, seguro.getIdtipo());
-			pst.setDouble(3, seguro.getCostocont());
-			pst.setDouble(4, seguro.getCostoaseg());
-			
-			filas = pst.executeUpdate();
-		} catch (Exception e) 
-		{
-			e.printStackTrace();
-		}finally {
-			try 
-			{
-				if(connection !=null)
-				{
-					connection.close();
-				}
-			} catch (Exception e2) {
-				e2.printStackTrace();
-			}
-			
-		}
+		String query = "INSERT INTO seguros (descripcion, idTipo, costoContratacion, costoAsegurado) VALUES (?, ?, ?, ?);";
+		Object[] parametros = {seguro.getDescripcion(), seguro.getIdseguro(), seguro.getCostocont(), seguro.getCostoaseg()}; 
 		
-		return filas != 0;
+		return datos.EjecutarAccion(query, parametros) != 0; 
 	}
 	
 	public ArrayList<Seguro> listarSeguros()
 	{
-		Connection connection = null;
 		
+		String query = "SELECT idSeguro, seguros.descripcion AS descripcionSeguro, seguros.idTipo, tiposeguros.descripcion AS descripcionTipo, costoContratacion, costoAsegurado FROM seguros INNER JOIN tiposeguros ON seguros.idTipo = tiposeguros.idTipo;";
 		ArrayList<Seguro> listaSeguros = new ArrayList<Seguro>();
 		
-		try 
-		{
-			connection = datos.obtenerConexion();
-			String query = "SELECT idSeguro, seguros.descripcion AS descripcionSeguro, seguros.idTipo, tiposeguros.descripcion AS descripcionTipo, costoContratacion, costoAsegurado FROM seguros INNER JOIN tiposeguros ON seguros.idTipo = tiposeguros.idTipo;";
+		try(Connection connection = datos.obtenerConexion();
 			PreparedStatement pst = connection.prepareStatement(query);
-			
-			ResultSet rst = pst.executeQuery();
-			
+			ResultSet rst = pst.executeQuery();){
+				
 			while(rst.next())
 			{
 				Seguro seg = new Seguro();
-				
-				seg.setIdseguro(rst.getInt("isSeguro"));
+					
+				seg.setIdseguro(rst.getInt("idSeguro"));
 				seg.setDescripcion(rst.getString("descripcion"));
 				seg.setIdtipo(rst.getInt("idTipo"));
 				seg.setCostocont(rst.getDouble("costoContratacion"));
 				seg.setCostoaseg(rst.getDouble("costoAsegurado"));
-				
+					
 				listaSeguros.add(seg);
-			}	
-			
-		} catch (Exception e) 
-		{
-			e.printStackTrace();
-		}finally 
-		{
-			try 
-			{
-				if(connection !=  null)
-				{
-					connection.close();
-				}
-			} catch (Exception e2) {
-				e2.printStackTrace();
 			}
+		
+		} 
+		catch (Exception e) {
+			e.printStackTrace();
 		}
+		
 		return listaSeguros;
 		
 	}

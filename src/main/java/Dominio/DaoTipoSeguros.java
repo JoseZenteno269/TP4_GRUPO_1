@@ -12,21 +12,22 @@ public class DaoTipoSeguros {
 	Datos datos = new Datos();
 
 	public ArrayList<TipoSeguros> listarTipoSeguros() {
+		
 		ArrayList<TipoSeguros> listaTipoSeguros = new ArrayList<TipoSeguros>();
-		Connection conn = null;
-		try {
-			conn = datos.obtenerConexion();
-			Statement st = conn.createStatement();
-			ResultSet rs = st.executeQuery("Select idTipo,descripcion FROM tipoSeguros");
-
+		
+		try(Connection cn = datos.obtenerConexion(); 
+			Statement st = cn.createStatement();
+			ResultSet rs = st.executeQuery("SELECT idTipo,descripcion FROM tipoSeguros");){
+			
 			while (rs.next()) {
 				TipoSeguros tipoSeguroRs = new TipoSeguros();
 				tipoSeguroRs.setIdtipo(rs.getInt("idTipo"));
 				tipoSeguroRs.setNombre(rs.getString("descripcion"));
 				listaTipoSeguros.add(tipoSeguroRs);
 			}
-			conn.close();
-		} catch (Exception e) {
+			
+		}
+		catch (Exception e) {
 			e.printStackTrace();
 		}
 
