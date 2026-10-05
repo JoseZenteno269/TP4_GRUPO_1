@@ -18,7 +18,7 @@ public class ServicioSeguros {
 		Seguro seguro = new Seguro(); 
 		
 		seguro.setDescripcion(descripcion);
-		seguro.setIdseguro(idtipo);
+		seguro.setIdtipo(idtipo);
 		seguro.setCostocont(precio1);
 		seguro.setCostoaseg(precio2);
 		

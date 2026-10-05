@@ -13,4 +13,12 @@
 		<welcome-file>default.jsp</welcome-file>
 		<welcome-file>default.xhtml</welcome-file>
 	</welcome-file-list>
+	<servlet>
+		<servlet-name>SeguroServlet</servlet-name>
+		<servlet-class>Servlet.SeguroServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>SeguroServlet</servlet-name>
+		<url-pattern>/AgregarSeguro</url-pattern>
+	</servlet-mapping>
 </web-app>

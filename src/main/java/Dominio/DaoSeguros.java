@@ -21,7 +21,7 @@ public class DaoSeguros {
 	public boolean AgregarSeguros(Seguro seguro){
 		
 		String query = "INSERT INTO seguros (descripcion, idTipo, costoContratacion, costoAsegurado) VALUES (?, ?, ?, ?);";
-		Object[] parametros = {seguro.getDescripcion(), seguro.getIdseguro(), seguro.getCostocont(), seguro.getCostoaseg()}; 
+		Object[] parametros = {seguro.getDescripcion(), seguro.getIdtipo(), seguro.getCostocont(), seguro.getCostoaseg()};
 		
 		return datos.EjecutarAccion(query, parametros) != 0; 
 	}
