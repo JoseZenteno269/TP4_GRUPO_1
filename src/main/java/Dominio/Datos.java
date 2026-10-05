@@ -18,7 +18,12 @@ public class Datos {
     }
     
     public Connection obtenerConexion() throws SQLException {
-    	return DriverManager.getConnection(host + dbName, user, pass);
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+        return DriverManager.getConnection(host + dbName + "?useSSL=false&serverTimezone=UTC", user, pass);
     }
     
     public int ejecutarProcedimientoAlmacenado(String consulta, Object[] parametros) {

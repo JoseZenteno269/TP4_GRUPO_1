@@ -28,34 +28,35 @@ public class DaoSeguros {
 	
 	public ArrayList<Seguro> listarSeguros()
 	{
-		
-		String query = "SELECT idSeguro, seguros.descripcion AS descripcionSeguro, seguros.idTipo, tiposeguros.descripcion AS descripcionTipo, costoContratacion, costoAsegurado FROM seguros INNER JOIN tiposeguros ON seguros.idTipo = tiposeguros.idTipo;";
-		ArrayList<Seguro> listaSeguros = new ArrayList<Seguro>();
-		
-		try(Connection connection = datos.obtenerConexion();
-			PreparedStatement pst = connection.prepareStatement(query);
-			ResultSet rst = pst.executeQuery();){
-				
-			while(rst.next())
-			{
-				Seguro seg = new Seguro();
-					
-				seg.setIdseguro(rst.getInt("idSeguro"));
-				seg.setDescripcion(rst.getString("descripcion"));
-				seg.setIdtipo(rst.getInt("idTipo"));
-				seg.setCostocont(rst.getDouble("costoContratacion"));
-				seg.setCostoaseg(rst.getDouble("costoAsegurado"));
-					
-				listaSeguros.add(seg);
-			}
-		
-		} 
-		catch (Exception e) {
-			e.printStackTrace();
-		}
-		
-		return listaSeguros;
-		
+	    String query = "SELECT idSeguro, seguros.descripcion AS descripcionSeguro, seguros.idTipo, "
+	                 + "tiposeguros.descripcion AS descripcionTipo, costoContratacion, costoAsegurado "
+	                 + "FROM seguros INNER JOIN tiposeguros ON seguros.idTipo = tiposeguros.idTipo;";
+
+	    ArrayList<Seguro> listaSeguros = new ArrayList<Seguro>();
+
+	    try(Connection connection = datos.obtenerConexion();
+	        PreparedStatement pst = connection.prepareStatement(query);
+	        ResultSet rst = pst.executeQuery();){
+
+	        while(rst.next())
+	        {
+	            Seguro seg = new Seguro();
+
+	            seg.setIdseguro(rst.getInt("idSeguro"));
+	            seg.setDescripcion(rst.getString("descripcionSeguro"));
+	            seg.setIdtipo(rst.getInt("idTipo"));
+	            seg.setDescripcionTipo(rst.getString("descripcionTipo"));
+	            seg.setCostocont(rst.getDouble("costoContratacion"));
+	            seg.setCostoaseg(rst.getDouble("costoAsegurado"));
+
+	            listaSeguros.add(seg);
+	        }
+	    }
+	    catch (Exception e) {
+	        e.printStackTrace();
+	    }
+
+	    return listaSeguros;
 	}
 	
 }
