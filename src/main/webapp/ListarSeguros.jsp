@@ -6,9 +6,17 @@
 <head>
 <meta charset="UTF-8">
 <title>Listar Seguros</title>
+<style type="text/css">
+	header{
+		display: flex; 
+		justify-content: space-evenly; 
+		align-items: center; 
+	}
+	
+</style>
 </head>
 <body>
-<a href="Inicio.jsp"> Inicio</a> <a href="AgregarSeguro.jsp"> Agregar Seguros</a> <a href="ListarSeguros"> Listar Seguros</a>
+<a href="Inicio.jsp"> Inicio</a> <a href="AgregarSeguro.jsp"> Agregar Seguros</a> <a href="ListarSeguros.jsp"> Listar Seguros</a>
 
 <h1>"Tipo de seguros en la base de datos"</h1>
 

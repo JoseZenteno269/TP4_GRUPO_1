@@ -4,17 +4,19 @@
 <head>
 <meta charset="UTF-8">
 <title>Agregar Seguros</title>
+<style type="text/css">
+	header{
+		display: flex; 
+		justify-content: space-evenly; 
+		align-items: center; 
+	}
+	
+</style>
 </head>
 <body>
 <a href = "Inicio.jsp"> Inicio</a> <a href = "AgregarSeguro.jsp"> Agregar Seguros</a> <a href = "ListarSeguros.jsp"> Listar Seguros</a>
 
 		<h1>Agregar Seguros</h1>
-		<% if ("1".equals(request.getParameter("agregado"))) { %>
-		<p>El seguro se guardó correctamente.</p>
-		<% } %>
-		<% if (request.getAttribute("errorAgregarSeguro") != null) { %>
-		<p>No se pudo guardar el seguro. Revise los datos e inténtelo nuevamente.</p>
-		<% } %>
 
 		<form method="post" action="<%= request.getContextPath() %>/AgregarSeguro">
 			<table>
@@ -45,6 +47,12 @@
 					<td><input type="submit" name="btnAceptar" value="Aceptar"></td>
 				</tr>
 			</table>
+		<% if ("1".equals(request.getParameter("agregado"))) { %>
+		<p>El seguro se guardó correctamente.</p>
+		<% } %>
+		<% if (request.getAttribute("errorAgregarSeguro") != null) { %>
+		<p>No se pudo guardar el seguro. Revise los datos e inténtelo nuevamente.</p>
+		<% } %>
 		</form>
 	</body>
 
