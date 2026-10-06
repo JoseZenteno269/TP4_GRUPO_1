@@ -97,4 +97,28 @@ public class DaoSeguros {
 	    return listaSeguros;
 	}
 	
+	public int ObtenerID()
+	{
+		Connection cn = null;
+		
+		int proximoID = 1;
+		
+		try 
+		{
+			cn = datos.obtenerConexion();
+			PreparedStatement pst = cn.prepareStatement("SELECT COUNT(*) + 1 FROM seguros");
+			ResultSet rst = pst.executeQuery();
+			
+			if(rst.next())
+			{
+				proximoID = rst.getInt(1);
+			}
+		} catch (Exception e) {
+			
+			e.printStackTrace();
+		}
+		
+		return proximoID;
+	}
+	
 }

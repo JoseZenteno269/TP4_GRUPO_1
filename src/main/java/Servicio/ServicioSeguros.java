@@ -32,4 +32,9 @@ public class ServicioSeguros {
 	public ArrayList<Seguro> obtenerSegurosPorTipo(int idTipo){
 	    return daoSeguros.listarSegurosPorTipo(idTipo);
 	}
+	
+	public int 	ObtenerID()
+	{
+		return daoSeguros.ObtenerID();
+	}
 }

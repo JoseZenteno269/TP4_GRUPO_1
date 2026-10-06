@@ -1,3 +1,5 @@
+<%@page import="Servicio.ServicioSeguros"%>
+<%@page import="Entidades.Seguro"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -20,6 +22,8 @@
 
 		<form method="post" action="<%= request.getContextPath() %>/AgregarSeguro">
 			<table>
+				<tr> <td>Id Seguro:<td> <%= new ServicioSeguros().ObtenerID() %>
+				</tr>
 				<tr>
 					<td>Descripción:</td>
 					<td><input type="text" name="txtDescripcion" maxlength="200" required></td>
