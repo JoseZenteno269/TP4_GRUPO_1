@@ -28,4 +28,8 @@ public class ServicioSeguros {
 	public ArrayList<Seguro> obtenerSeguros(){
 		return daoSeguros.listarSeguros(); 
 	}
+	
+	public ArrayList<Seguro> obtenerSegurosPorTipo(int idTipo){
+	    return daoSeguros.listarSegurosPorTipo(idTipo);
+	}
 }

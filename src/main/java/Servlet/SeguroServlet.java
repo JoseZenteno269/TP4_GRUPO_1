@@ -15,15 +15,27 @@ public class SeguroServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	@Override
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+	        throws ServletException, IOException {
 
-		ServicioSeguros servicioSeguros = new ServicioSeguros();
-		ArrayList<Seguro> listaSeguros = servicioSeguros.obtenerSeguros();
+	    ServicioSeguros servicioSeguros = new ServicioSeguros();
+	    ArrayList<Seguro> listaSeguros;
 
-		request.setAttribute("listaSeguros", listaSeguros);
+	    String tipoSeguro = request.getParameter("ddlTipoSeguro");
 
-		RequestDispatcher rd = request.getRequestDispatcher("/ListarSeguros.jsp");
-		rd.forward(request, response);
+	    if (tipoSeguro != null && !tipoSeguro.isEmpty()) {
+	        int idTipo = Integer.parseInt(tipoSeguro);
+
+	        listaSeguros = servicioSeguros.obtenerSegurosPorTipo(idTipo);
+	    }
+	    else {
+	        listaSeguros = servicioSeguros.obtenerSeguros();
+	    }
+
+	    request.setAttribute("listaSeguros", listaSeguros);
+
+	    RequestDispatcher rd = request.getRequestDispatcher("/ListarSeguros.jsp");
+	    rd.forward(request, response);
 	}
 
 	@Override

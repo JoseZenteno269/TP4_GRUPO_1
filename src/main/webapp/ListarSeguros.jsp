@@ -20,7 +20,7 @@
 
 <h1>"Tipo de seguros en la base de datos"</h1>
 
-<form method="get" action="">
+<form method="get" action="<%= request.getContextPath() %>/ListarSeguros">
     Busqueda por tipo de seguros:
     <select name="ddlTipoSeguro">
         <option value="1">Seguro de casas</option>
