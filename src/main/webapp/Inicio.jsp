@@ -18,7 +18,7 @@
 	<header>
 		<a href = "Inicio.jsp"> Inicio</a> 
 		<a href = "AgregarSeguro.jsp"> Agregar Seguros</a>
-		<a href = "ListarSeguros.jsp"> Listar Seguros </a>
+		<a href = "<%= request.getContextPath() %>/ListarSeguros"> Listar Seguros </a>
 	</header>
 	
 	<main>
