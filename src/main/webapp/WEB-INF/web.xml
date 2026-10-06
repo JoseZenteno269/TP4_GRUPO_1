@@ -22,11 +22,12 @@
 		<url-pattern>/AgregarSeguro</url-pattern>
 	</servlet-mapping>
 	<servlet>
-	    <servlet-name>ListarSegurosServlet</servlet-name>
-	    <servlet-class>Servlet.ListarSegurosServlet</servlet-class>
+	<servlet-name>TipoSeguroServlet</servlet-name>
+	<servlet-class>Servlet.TipoSeguroServlet</servlet-class>
 	</servlet>
 	<servlet-mapping>
-	    <servlet-name>ListarSegurosServlet</servlet-name>
-	    <url-pattern>/ListarSeguros</url-pattern>
+		<servlet-name>TipoSeguroServlet</servlet-name>
+		<url-pattern>/TipoSeguro</url-pattern>
 	</servlet-mapping>
+	
 </web-app>
