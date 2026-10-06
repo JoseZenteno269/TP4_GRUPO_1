@@ -9,7 +9,7 @@ public class Seguro {
 	private double costoaseg; 
 	private String descripcionTipo;
 	private static int cont = 0; 
-	
+	int xd = 1;
 	public Seguro() {
 		cont++; 
 		idseguro = cont; 
