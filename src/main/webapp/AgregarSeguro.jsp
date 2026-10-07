@@ -1,5 +1,8 @@
 <%@page import="Servicio.ServicioSeguros"%>
+<%@page import="Servicio.ServicioTipoSeguro"%>
 <%@page import="Entidades.Seguro"%>
+<%@page import="Entidades.TipoSeguros"%>
+<%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -16,7 +19,11 @@
 </style>
 </head>
 <body>
-<a href = "Inicio.jsp"> Inicio</a> <a href = "AgregarSeguro.jsp"> Agregar Seguros</a> <a href = "<%= request.getContextPath() %>/ListarSeguros"> Listar Seguros</a>
+<header>
+	<a href = "Inicio.jsp"> Inicio</a> 
+	<a href = "AgregarSeguro.jsp"> Agregar Seguros</a>
+	<a href = "<%= request.getContextPath() %>/ListarSeguros"> Listar Seguros </a>
+</header>
 
 		<h1>Agregar Seguros</h1>
 
@@ -32,9 +39,17 @@
 					<td>Tipo de Seguro:</td>
 					<td>
 						<select name="ddlTipoSeguro" required>
-							<option value="1">Seguro de casas</option>
-							<option value="2">Seguro de vida</option>
-							<option value="3">Seguro de motos</option>
+							<%
+								ArrayList<TipoSeguros> tipos = (ArrayList<TipoSeguros>) request.getAttribute("tipos");
+								if (tipos == null) {
+									tipos = new ServicioTipoSeguro().obtenerTipoSeguros();
+								}
+								for (TipoSeguros t : tipos) {
+							%>
+								<option value="<%= t.getIdtipo() %>"><%= t.getNombre() %></option>
+							<%
+								}
+							%>
 						</select>
 					</td>
 				</tr>

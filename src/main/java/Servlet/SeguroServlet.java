@@ -5,6 +5,7 @@ import java.util.ArrayList;
 
 import Entidades.Seguro;
 import Servicio.ServicioSeguros;
+import Servicio.ServicioTipoSeguro;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
@@ -33,6 +34,7 @@ public class SeguroServlet extends HttpServlet {
 	    }
 
 	    request.setAttribute("listaSeguros", listaSeguros);
+	    request.setAttribute("tipos", new ServicioTipoSeguro().obtenerTipoSeguros());
 
 	    RequestDispatcher rd = request.getRequestDispatcher("/ListarSeguros.jsp");
 	    rd.forward(request, response);

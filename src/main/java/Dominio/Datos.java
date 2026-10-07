@@ -10,7 +10,7 @@ public class Datos {
 	
     private String host = "jdbc:mysql://localhost:3306/";
     private String user = "root";
-    private String pass = "root";
+    private String pass = "asusrog7";
     private String dbName = "segurosgroup";
     
     public Datos() {

@@ -1,7 +1,9 @@
 package Servlet;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
+import Entidades.TipoSeguros;
 import Servicio.ServicioTipoSeguro;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
@@ -16,7 +18,9 @@ public class TipoSeguroServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		ServicioTipoSeguro servicioTipoSeguro = new ServicioTipoSeguro();
-		request.setAttribute("tipos", servicioTipoSeguro.obtenerTipoSeguros());
+		ArrayList<TipoSeguros> tipoSeguros = servicioTipoSeguro.obtenerTipoSeguros();
+		
+		request.setAttribute("tipos", tipoSeguros);
 
 		RequestDispatcher rd = request.getRequestDispatcher("/AgregarSeguro.jsp");
 		rd.forward(request, response);
